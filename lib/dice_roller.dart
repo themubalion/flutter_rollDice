@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class DiceRoller extends StatefulWidget {
@@ -10,12 +11,12 @@ class DiceRoller extends StatefulWidget {
 }
 
 class _DiceRollerState extends State<DiceRoller> {
-  String activeDice = 'assets/images/dice-3.png';
+  int currentDiceNum = Random().nextInt(6) + 1;
 
   void rollDice() {
     setState(() {
-      activeDice = 'assets/images/dice-2.png';
-    });
+    currentDiceNum = Random().nextInt(6) + 1;
+    });   
   }
 
   @override
@@ -24,7 +25,7 @@ class _DiceRollerState extends State<DiceRoller> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(
-          activeDice,
+          'assets/images/dice-$currentDiceNum.png',
           width: 200,
         ),
         const SizedBox(
